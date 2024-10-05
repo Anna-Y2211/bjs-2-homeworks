@@ -10,7 +10,7 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function(...marks) {
-    if(this.hasOwnProperty('marks') === true) {
+    if(this.hasOwnProperty('marks')) {
         this.marks.push(...marks);
     }
 }
@@ -19,13 +19,14 @@ Student.prototype.getAverage = function() {
     if(this.marks === undefined || this.marks.length === 0) {
         return 0
     }
-    this.marks.reduce((acc, marks, index) => {
+    const avg = this.marks.reduce((acc, marks, index) => {
         acc += marks;
         if(index === marks.length -1) {
             return acc / marks.length
         }
         return acc
     }, 0)
+       return avg
 }
 
 Student.prototype.exclude = function(reason) {

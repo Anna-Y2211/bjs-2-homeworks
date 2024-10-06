@@ -16,14 +16,11 @@ Student.prototype.addMarks = function(...marks) {
 }
 
 Student.prototype.getAverage = function() {
-    if(this.marks = !undefined) {
+    if(this.marks === undefined) {
         return 0
+    } else {
+        return this.marks.reduce((acc, marks) => acc + marks) / marks.length;
     }
-   
-    this.marks.reduce((acc, marks) => {
-        acc + marks;
-        return acc / marks.length
-    }, 0)
             
 }
 

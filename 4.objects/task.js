@@ -16,17 +16,15 @@ Student.prototype.addMarks = function(...marks) {
 }
 
 Student.prototype.getAverage = function() {
-    if(this.marks === undefined || this.marks.length === 0) {
+    if(this.marks = !undefined) {
         return 0
     }
-    const avg = this.marks.reduce((acc, marks, index) => {
-        acc += marks;
-        if(index === marks.length -1) {
-            return acc / marks.length
-        }
-        return acc
+   
+    this.marks.reduce((acc, marks) => {
+        acc + marks;
+        return acc / marks.length
     }, 0)
-       return avg
+            
 }
 
 Student.prototype.exclude = function(reason) {

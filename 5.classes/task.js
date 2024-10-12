@@ -42,7 +42,7 @@ class Magazine extends PrintEditionItem {
 
 class Book extends PrintEditionItem {
     constructor(author, name, releaseDate, pagesCount) {
-        super();
+        super(author, name, releaseDate, pagesCount);
         this.author = author;
         this.type = 'book';
     }
@@ -50,21 +50,21 @@ class Book extends PrintEditionItem {
 
 class NovelBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author);
+        super(author, name, releaseDate, pagesCount);
         this.type = 'novel';
     }
 }
 
 class FantasticBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author);
+        super(author, name, releaseDate, pagesCount);
         this.type = 'fantastic';
     }
 }
 
 class DetectiveBook extends Book {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author);
+        super(author, name, releaseDate, pagesCount);
         this.type = 'detective';
     }
 }
@@ -89,9 +89,18 @@ const picknick = new FantasticBook(
     }
     addBook(book) {
         if(book.state > 30) {
-            return book.state.push(book)
+            return books.push(book)
         }
     }
     findBookBy(type, value) {
-        
+        return this.books.find(book => book[type] === value) || null}
+
     }
+    giveBookByName(bookName) {
+        if(this.books.find(book => book[type] === value)) {
+            return this.books.splice(0, 1)
+        } else {
+            return null
+        }
+    }
+    

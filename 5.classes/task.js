@@ -35,14 +35,14 @@ const sherlock = new PrintEditionItem(
 
 class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
-        super();
+        super(name, releaseDate, pagesCount);
         this.type = 'magazine';
     }
 }
 
 class Book extends PrintEditionItem {
     constructor(author, name, releaseDate, pagesCount) {
-        super(author, name, releaseDate, pagesCount);
+        super(name, releaseDate, pagesCount);
         this.author = author;
         this.type = 'book';
     }
@@ -83,24 +83,53 @@ const picknick = new FantasticBook(
   console.log(picknick.state); 
 
   class Library {
-    consrtuctor(name) {
+    constructor(name) {
         this.name = name;
         this.books = [];
     }
     addBook(book) {
-        if(book.state > 30) {
-            return books.push(book)
+        if(book .state> 30) {
+            return this.books.push(book)
         }
     }
     findBookBy(type, value) {
-        return this.books.find(book => book[type] === value) || null}
+        return this.books.find(book => book[type] === value) || null;
 
     }
     giveBookByName(bookName) {
-        if(this.books.find(book => book[type] === value)) {
-            return this.books.splice(0, 1)
+       const book = 0;
+        if(this.findBookBy('name', bookName)) {
+            return this.books.splice(this.books.indexOf(book), 1)
         } else {
             return null
         }
     }
-    
+  }
+
+const library = new Library("Библиотека имени Ленина");
+
+library.addBook(
+ new DetectiveBook(
+   "Артур Конан Дойл",
+   "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+   2019,
+   1008
+ )
+);
+library.addBook(
+ new FantasticBook(
+   "Аркадий и Борис Стругацкие",
+   "Пикник на обочине",
+   1972,
+   168
+ )
+);
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+
+console.log(library.findBookBy("name", "Властелин колец")); 
+console.log(library.findBookBy("releaseDate", 1924).name); 
+
+console.log("Количество книг до выдачи: " + library.books.length);
+library.giveBookByName("Машина времени");
+console.log("Количество книг после выдачи: " + library.books.length);

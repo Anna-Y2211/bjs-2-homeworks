@@ -99,7 +99,7 @@ const picknick = new FantasticBook(
     giveBookByName(bookName) {
        const book = 0;
         if(this.findBookBy('name', bookName)) {
-            return this.books.splice(this.books.indexOf(book), 1)
+            return this.books.splice(this.books.indexOf(book), 1)[0]
         } else {
             return null
         }

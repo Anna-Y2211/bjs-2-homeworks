@@ -3,16 +3,14 @@
     if(Number.isNaN(value)) {
         throw new Error('Невалидное значение');
     }
-    return parseCount
+    return value;
 }
 function validateCount(value2) {
     try{
         return parseCount(value2);
     }catch(error) {
         return error;
-        console.log('Ошибка!');
     }
-   validateCount(value2)
 }
 
 class Triangle {
@@ -29,7 +27,7 @@ class Triangle {
         return this.a + this.b + this.c
     }
     get area() {
-        const p = 0.5 * (this.a + this.b + this.c);
+        const p = this.perimeter / 2;
         return Number(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3);
     }
 }
@@ -38,10 +36,10 @@ function getTriangle(a,b,c) {
         return new Triangle(a,b,c);
     }catch(error) {
         return {
-            getArea: function() {
+            get area() {
                 return 'Ошибка, треугольник не существует';
-            }
-            getPerimeter: function() {
+            },
+            get perimeter () {
               return 'Ошибка, треугольник не существует';
             }
         }

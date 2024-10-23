@@ -1,13 +1,13 @@
 ﻿function parseCount(value) {
     const num = Number.parseFloat(value);
-    if(Number.isNaN(value)) {
+    if(Number.isNaN(num)) {
         throw new Error('Невалидное значение');
     }
-    return value;
+    return num;
 }
-function validateCount(value2) {
+function validateCount(valuesecond) {
     try{
-        return parseCount(value2);
+        return parseCount(valuesecond);
     }catch(error) {
         return error;
     }
@@ -28,7 +28,7 @@ class Triangle {
     }
     get area() {
         const p = this.perimeter / 2;
-        return Number(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3);
+        return Number(Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3));
     }
 }
 function getTriangle(a,b,c) {
@@ -37,10 +37,10 @@ function getTriangle(a,b,c) {
     }catch(error) {
         return {
             get area() {
-                return 'Ошибка, треугольник не существует';
+                return 'Ошибка! Треугольник не существует';
             },
-            get perimeter () {
-              return 'Ошибка, треугольник не существует';
+            get perimeter() {
+              return 'Ошибка! Треугольник не существует';
             }
         }
     }

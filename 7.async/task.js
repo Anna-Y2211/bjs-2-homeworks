@@ -19,13 +19,12 @@ class AlarmClock {
     }
 
     removeClock(time) {
-        this.alarmCollection.filter((time) => {
-            return time !== true;
-        });
+        this.alarmCollection = this.alarmCollection.filter(alarm => alarm.time !== time);
+        
     }
 
     getCurrentFormattedTime() {
-        return new Date().toLocaleDateString('ru-Ru', {
+        return new Date().toLocaleTimeString('ru-Ru', {
             hour: '2-digit',
             minute: '2-digit',
         });
